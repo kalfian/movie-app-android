@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+        <item
+                android:id="@+id/drawer_navigation_movie"
+                android:icon="@drawable/ico_movie"
+                android:title="@string/bottom_movie"/>
+        <item
+                android:id="@+id/drawer_navigation_tv_show"
+                android:icon="@drawable/ico_tv_show"
+                android:title="@string/bottom_tv"/>
+        <item
+                android:id="@+id/drawer_navigation_favorite"
+                android:icon="@drawable/ico_fav"
+                android:title="@string/bottom_favorite"/>
+</menu>
