@@ -2,6 +2,7 @@ package com.kalfian.movieapp.services
 
 import com.google.gson.GsonBuilder
 import com.kalfian.movieapp.model.ResponseMovie
+import com.kalfian.movieapp.model.ResponseTvShow
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -18,6 +19,12 @@ interface BaseAPI {
         @Query("api_key") api_key: String,
         @Query("language") language: String
     ): Observable<ResponseMovie>
+
+    @GET("discover/tv?")
+    fun getTvShow(
+        @Query("api_key") api_key: String,
+        @Query("language") language: String
+    ): Observable<ResponseTvShow>
 
     companion object {
         var URL: String = "https://api.themoviedb.org/3/"

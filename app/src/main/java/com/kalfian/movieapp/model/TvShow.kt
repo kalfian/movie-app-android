@@ -4,7 +4,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-class ResponseMovie {
+class ResponseTvShow {
     @SerializedName("page")
     var page: Int? = 0
 
@@ -15,11 +15,11 @@ class ResponseMovie {
     var total_pages: Long? = 0
 
     @SerializedName("results")
-    var results: List<ResultMovie>? = null
+    var results: List<ResultTvShow>? = null
 
     @Parcelize
-    data class ResultMovie (
-        @SerializedName("original_name")
+    data class ResultTvShow (
+        @SerializedName("title")
         var title: String = "",
 
         @SerializedName("poster_path")
@@ -28,14 +28,13 @@ class ResponseMovie {
         @SerializedName("overview")
         var overview: String = "",
 
-        @SerializedName("release_date")
-        var release_date: String = "",
+        @SerializedName("first_air_date")
+        var first_air: String = "",
 
         @SerializedName("popularity")
         var popularity: Double = 0.0,
 
         @SerializedName("vote_average")
         var vote: Double= 0.0
-
     ) : Parcelable
 }
