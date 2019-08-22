@@ -1,7 +1,6 @@
 package com.kalfian.movieapp.view.ui.tvShow
 
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -11,9 +10,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.kalfian.movieapp.R
 import com.kalfian.movieapp.model.ResponseTvShow
-import com.kalfian.movieapp.presenter.TvShowPresenter
+import com.kalfian.movieapp.presenter.tvShow.TvShowPresenter
 import com.kalfian.movieapp.view.MainView
-import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.fragment_tvshow.view.*
 
 /**
@@ -67,5 +65,11 @@ class TVShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.OnItemClic
 
     override fun onItemClickListener(position: Int) {
         context?.let { presenter.goToDetailTvShow(it, position) }
+    }
+
+    override fun showLoader() {
+    }
+
+    override fun hideLoader() {
     }
 }

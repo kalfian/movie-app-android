@@ -1,4 +1,4 @@
-package com.kalfian.movieapp.presenter
+package com.kalfian.movieapp.presenter.tvShow
 
 import android.content.Context
 import android.content.Intent

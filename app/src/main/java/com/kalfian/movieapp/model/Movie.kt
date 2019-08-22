@@ -19,7 +19,10 @@ class ResponseMovie {
 
     @Parcelize
     data class ResultMovie (
-        @SerializedName("original_name")
+        @SerializedName("id")
+        var id: Long = 0,
+
+        @SerializedName("title")
         var title: String = "",
 
         @SerializedName("poster_path")

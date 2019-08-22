@@ -1,6 +1,6 @@
 package com.kalfian.movieapp.view.ui.movie
 
-
+import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -10,8 +10,9 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.kalfian.movieapp.R
 import com.kalfian.movieapp.model.ResponseMovie
-import com.kalfian.movieapp.presenter.MoviePresenter
+import com.kalfian.movieapp.presenter.movie.MoviePresenter
 import com.kalfian.movieapp.view.MainView
+import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.fragment_movie.view.*
 
 /**
@@ -26,6 +27,8 @@ class MovieFragment : Fragment(), MainView.MovieView, MovieAdapter.OnItemClickLi
 
     private val KEYMOVIE = "DataMovie"
 
+    var dialog: AlertDialog? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +41,7 @@ class MovieFragment : Fragment(), MainView.MovieView, MovieAdapter.OnItemClickLi
         super.onViewCreated(view, savedInstanceState)
 
         view.recyclerView_movie.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+        dialog = SpotsDialog.Builder().setContext(context).build()
 
         if (savedInstanceState != null) {
             showData(savedInstanceState.getParcelableArrayList(KEYMOVIE))
@@ -67,5 +71,13 @@ class MovieFragment : Fragment(), MainView.MovieView, MovieAdapter.OnItemClickLi
 
     override fun onItemClick(pos: Int) {
         context?.let { presenter.goToDetailMovie(it, pos) }
+    }
+
+    override fun showLoader() {
+        dialog?.show()
+    }
+
+    override fun hideLoader() {
+        dialog?.hide()
     }
 }

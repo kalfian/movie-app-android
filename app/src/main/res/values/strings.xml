@@ -15,4 +15,12 @@
     <string name="title">title</string>
     <string name="description">description</string>
     <string name="loading">Loading…</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="vote_average">Vote average</string>
+    <string name="no_string">-</string>
+    <string name="release">Release date</string>
+    <string name="thumbnail_image">image thumbnail</string>
+    <string name="popularity">Pupularity</string>
+    <string name="tv_show_name">TV Show name</string>
+    <string name="first_air">First Air Date</string>
 </resources>

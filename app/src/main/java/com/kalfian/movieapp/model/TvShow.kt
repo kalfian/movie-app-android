@@ -19,7 +19,7 @@ class ResponseTvShow {
 
     @Parcelize
     data class ResultTvShow (
-        @SerializedName("title")
+        @SerializedName("original_name")
         var title: String = "",
 
         @SerializedName("poster_path")

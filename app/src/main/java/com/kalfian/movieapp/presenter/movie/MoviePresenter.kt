@@ -1,6 +1,5 @@
-package com.kalfian.movieapp.presenter
+package com.kalfian.movieapp.presenter.movie
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -20,6 +19,7 @@ class MoviePresenter(val view: MainView.MovieView): MainView.MoviePresenter {
     private var result : ArrayList<ResponseMovie.ResultMovie>? = null
 
     override fun getMovie() {
+        view.showLoader()
         compositeDisposable = CompositeDisposable()
         compositeDisposable?.add(
             baseAPI.getMovie(BuildConfig.MOVIE_API_KEY, "en-US")
@@ -28,6 +28,7 @@ class MoviePresenter(val view: MainView.MovieView): MainView.MoviePresenter {
                     object : DisposableObserver<ResponseMovie>() {
                         override fun onComplete() {
                             Log.d("RESPONSE_MOVIE", "Complete")
+                            view.hideLoader()
                         }
 
                         override fun onNext(t: ResponseMovie) {
@@ -38,10 +39,12 @@ class MoviePresenter(val view: MainView.MovieView): MainView.MoviePresenter {
                             } else {
                                 t.results as ArrayList<ResponseMovie.ResultMovie>
                             }
+                            view.hideLoader()
                         }
 
                         override fun onError(e: Throwable) {
                             Log.d("RESPONSE_MOVIE", "Error data :"+e.localizedMessage)
+                            view.hideLoader()
                         }
 
                     }

@@ -8,6 +8,8 @@ interface MainView {
     interface MovieView {
         fun showData(data: ArrayList<ResponseMovie.ResultMovie>)
         fun getData()
+        fun showLoader()
+        fun hideLoader()
     }
 
     interface MoviePresenter {
@@ -18,6 +20,8 @@ interface MainView {
     interface TvShowView {
         fun showData(data: ArrayList<ResponseTvShow.ResultTvShow>)
         fun getData()
+        fun showLoader()
+        fun hideLoader()
     }
 
     interface TvShowPresenter {
