@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        moveFragment(MovieFragment())
-
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -36,6 +34,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         drawerNavView.setNavigationItemSelectedListener(this)
+
+        moveFragment(MovieFragment(), getString(R.string.bottom_movie))
     }
 
     override fun onBackPressed() {
@@ -50,13 +50,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.drawer_navigation_movie -> {
-                moveFragment(MovieFragment())
+                moveFragment(MovieFragment(), getString(R.string.bottom_movie))
             }
             R.id.drawer_navigation_tv_show -> {
-                moveFragment(TVShowFragment())
+                moveFragment(TVShowFragment(), getString(R.string.bottom_tv))
             }
             R.id.drawer_navigation_favorite -> {
-                moveFragment(FavoriteFragment())
+                moveFragment(FavoriteFragment(), getString(R.string.bottom_favorite))
             }
         }
 
@@ -74,7 +74,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    private fun moveFragment(fragment: Fragment) {
+    private fun moveFragment(fragment: Fragment, title: String) {
+        supportActionBar?.title = title
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_frame, fragment)
             .commit()

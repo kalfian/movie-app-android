@@ -19,6 +19,9 @@ class ResponseTvShow {
 
     @Parcelize
     data class ResultTvShow (
+        @SerializedName("id")
+        var id: Long = 0,
+
         @SerializedName("original_name")
         var title: String = "",
 

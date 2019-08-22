@@ -20,8 +20,11 @@ class DetailMovieActivity : AppCompatActivity(), DetailView.ViewMovie {
         setContentView(R.layout.activity_detail_movie)
         actionBar?.setDisplayShowHomeEnabled(true)
 
+
         presenter = DetailMoviePresenter(this)
         getData()
+
+
     }
 
     override fun getData() {
@@ -49,6 +52,8 @@ class DetailMovieActivity : AppCompatActivity(), DetailView.ViewMovie {
         movie_vote.text = rating
         movie_popularity.text = popularity
         movie_overview.text = description
+
+        supportActionBar?.title = title
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

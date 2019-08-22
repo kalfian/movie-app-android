@@ -1,7 +1,6 @@
 package com.kalfian.movieapp.presenter.movie
 
 import android.content.Context
-import com.kalfian.movieapp.BuildConfig
 import com.kalfian.movieapp.model.ResponseMovie
 import com.kalfian.movieapp.view.DetailView
 

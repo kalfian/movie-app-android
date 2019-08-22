@@ -19,6 +19,7 @@ class TvShowPresenter(val view: MainView.TvShowView): MainView.TvShowPresenter {
     private var result: ArrayList<ResponseTvShow.ResultTvShow>? = null
 
     override fun getTvShow() {
+        view.showLoader()
         compositeDisposable = CompositeDisposable()
         compositeDisposable?.add(
             baseAPI.getTvShow(BuildConfig.MOVIE_API_KEY, "en-US")
@@ -27,6 +28,7 @@ class TvShowPresenter(val view: MainView.TvShowView): MainView.TvShowPresenter {
                     object : DisposableObserver<ResponseTvShow>() {
                         override fun onComplete() {
                             Log.d("RESPONSE_MOVIE", "Complete")
+                            view.hideLoader()
                         }
 
                         override fun onNext(t: ResponseTvShow) {
@@ -37,10 +39,12 @@ class TvShowPresenter(val view: MainView.TvShowView): MainView.TvShowPresenter {
                             } else {
                                 t.results as ArrayList<ResponseTvShow.ResultTvShow>
                             }
+                            view.hideLoader()
                         }
 
                         override fun onError(e: Throwable) {
                             Log.d("RESPONSE_MOVIE", "Error data :"+e.localizedMessage)
+                            view.hideLoader()
                         }
 
                     }

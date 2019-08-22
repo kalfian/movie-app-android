@@ -35,6 +35,7 @@ class MovieFragment : Fragment(), MainView.MovieView, MovieAdapter.OnItemClickLi
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_movie, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

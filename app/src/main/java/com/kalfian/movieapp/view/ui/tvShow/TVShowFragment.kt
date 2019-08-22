@@ -1,6 +1,7 @@
 package com.kalfian.movieapp.view.ui.tvShow
 
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -12,6 +13,7 @@ import com.kalfian.movieapp.R
 import com.kalfian.movieapp.model.ResponseTvShow
 import com.kalfian.movieapp.presenter.tvShow.TvShowPresenter
 import com.kalfian.movieapp.view.MainView
+import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.fragment_tvshow.view.*
 
 /**
@@ -23,6 +25,7 @@ class TVShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.OnItemClic
     private lateinit var adapter: TvShowAdapter
     private lateinit var presenter: TvShowPresenter
     private lateinit var dataGlobal: ArrayList<ResponseTvShow.ResultTvShow>
+    var dialog: AlertDialog? = null
 
     private val KEYTVSHOW = "DataTvShow"
 
@@ -37,6 +40,7 @@ class TVShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.OnItemClic
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.recyclerView_tv_show.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+        dialog = SpotsDialog.Builder().setContext(context).build()
 
         if (savedInstanceState != null) {
             showData(savedInstanceState.getParcelableArrayList(KEYTVSHOW))
@@ -68,8 +72,10 @@ class TVShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.OnItemClic
     }
 
     override fun showLoader() {
+        dialog?.show()
     }
 
     override fun hideLoader() {
+        dialog?.dismiss()
     }
 }
