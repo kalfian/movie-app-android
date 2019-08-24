@@ -1,5 +1,7 @@
 package com.kalfian.movieapp.model
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
@@ -17,8 +19,10 @@ class ResponseMovie {
     @SerializedName("results")
     var results: List<ResultMovie>? = null
 
+    @Entity(tableName = "movie_db")
     @Parcelize
     data class ResultMovie (
+        @PrimaryKey
         @SerializedName("id")
         var id: Long = 0,
 

@@ -17,6 +17,11 @@ interface MainView {
         fun goToDetailMovie(context: Context, position: Int)
     }
 
+    interface FavoriteMoviePresenter {
+        fun getFavoriteMovie(context: Context)
+        fun toDetail(context: Context, position: Int)
+    }
+
     interface TvShowView {
         fun showData(data: ArrayList<ResponseTvShow.ResultTvShow>)
         fun getData()
@@ -27,5 +32,10 @@ interface MainView {
     interface TvShowPresenter {
         fun getTvShow()
         fun goToDetailTvShow(context: Context, position: Int)
+    }
+
+    interface FavoritTvShowPresenter {
+        fun getFavoriteTvShow(context: Context)
+        fun toDetail(context: Context, position: Int)
     }
 }

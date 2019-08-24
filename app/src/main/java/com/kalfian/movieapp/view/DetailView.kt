@@ -15,6 +15,10 @@ interface DetailView {
             popularity : String,
             description : String
         )
+        fun checkFavorite()
+        fun addFavorite()
+        fun removeFavorite()
+        fun getFavorite()
     }
 
     interface PresenterMovie {
@@ -22,6 +26,16 @@ interface DetailView {
             context: Context,
             data: ResponseMovie.ResultMovie
         )
+
+        fun setFavorite(
+            context: Context
+        )
+        fun unsetFavorite(
+            context: Context
+        )
+        fun getFavorite(
+            context: Context
+        ) : Boolean
     }
 
     interface ViewTVShow {
@@ -34,6 +48,10 @@ interface DetailView {
             popularity : String,
             description : String
         )
+        fun checkFavorite()
+        fun addFavorite()
+        fun removeFavorite()
+        fun getFavorite()
     }
 
     interface PresenterTVShow {
@@ -41,5 +59,15 @@ interface DetailView {
             context: Context,
             data: ResponseTvShow.ResultTvShow
         )
+
+        fun setFavorite(
+            context: Context
+        )
+        fun unsetFavorite(
+            context: Context
+        )
+        fun getFavorite(
+            context: Context
+        ) : Boolean
     }
 }

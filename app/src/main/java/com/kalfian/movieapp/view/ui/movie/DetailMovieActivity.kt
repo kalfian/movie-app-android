@@ -2,6 +2,8 @@ package com.kalfian.movieapp.view.ui.movie
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.view.Menu
 import android.view.MenuItem
 import com.kalfian.movieapp.BuildConfig
 import com.kalfian.movieapp.R
@@ -13,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_detail_movie.*
 class DetailMovieActivity : AppCompatActivity(), DetailView.ViewMovie {
 
     private lateinit var presenter: DetailView.PresenterMovie
+    private var menuItem: Menu? = null
     private var isFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +26,7 @@ class DetailMovieActivity : AppCompatActivity(), DetailView.ViewMovie {
 
         presenter = DetailMoviePresenter(this)
         getData()
+        getFavorite()
 
 
     }
@@ -56,12 +60,49 @@ class DetailMovieActivity : AppCompatActivity(), DetailView.ViewMovie {
         supportActionBar?.title = title
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_fav, menu)
+        menuItem = menu
+        checkFavorite()
+        return true
+    }
+
+    override fun checkFavorite() {
+        if (isFavorite) {
+            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_star_white_24dp)
+        } else {
+            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_star_border_white_24dp)
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item?.itemId
         if (id == R.id.home) {
             finish()
+        }else if (id == R.id.set_favorite) {
+            if (isFavorite) {
+                removeFavorite()
+            } else {
+                addFavorite()
+            }
+            isFavorite = !isFavorite
+            checkFavorite()
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun addFavorite() {
+        presenter.setFavorite(applicationContext)
+    }
+
+    override fun removeFavorite() {
+        presenter.unsetFavorite(applicationContext)
+    }
+
+    override fun getFavorite() {
+        if (presenter.getFavorite(applicationContext)) {
+            isFavorite = true
+        }
     }
 }
