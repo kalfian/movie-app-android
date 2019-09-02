@@ -1,4 +1,4 @@
-package com.kalfian.movieapp.dao
+package com.kalfian.movieapp.model.dao
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert

@@ -27,8 +27,6 @@ class DetailMovieActivity : AppCompatActivity(), DetailView.ViewMovie {
         presenter = DetailMoviePresenter(this)
         getData()
         getFavorite()
-
-
     }
 
     override fun getData() {

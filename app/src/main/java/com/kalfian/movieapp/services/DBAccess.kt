@@ -4,8 +4,8 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
-import com.kalfian.movieapp.dao.MovieDao
-import com.kalfian.movieapp.dao.TvshowDao
+import com.kalfian.movieapp.model.dao.MovieDao
+import com.kalfian.movieapp.model.dao.TvshowDao
 import com.kalfian.movieapp.model.ResponseMovie
 import com.kalfian.movieapp.model.ResponseTvShow
 

@@ -26,6 +26,20 @@ interface BaseAPI {
         @Query("language") language: String
     ): Observable<ResponseTvShow>
 
+    @GET("search/movie?")
+    fun searchMovie(
+        @Query("api_key") api_key: String,
+        @Query("language") language: String,
+        @Query("query") query: String
+    ): Observable<ResponseMovie>
+
+    @GET("search/tv?")
+    fun searchTvShow(
+        @Query("api_key") api_key: String,
+        @Query("language") language: String,
+        @Query("query") query: String
+    ): Observable<ResponseTvShow>
+
     companion object {
         var URL: String = "https://api.themoviedb.org/3/"
         fun create(): BaseAPI {

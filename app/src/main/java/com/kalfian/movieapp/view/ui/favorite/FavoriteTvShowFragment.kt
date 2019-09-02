@@ -51,16 +51,19 @@ class FavoriteTvShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.On
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelableArrayList(KEYTVSHOW, dataGlobal)
+        if(::dataGlobal.isInitialized) {
+            outState.putParcelableArrayList(KEYTVSHOW, dataGlobal)
+        }
     }
 
     override fun showData(data: ArrayList<ResponseTvShow.ResultTvShow>) {
         hideLoader()
         adapter = TvShowAdapter(data)
+        this.dataGlobal = data
         view?.recyclerView_tv_show_favorite?.adapter = adapter
         adapter.notifyDataSetChanged()
         adapter.setOnItemClickListener(this)
-        this.dataGlobal = data
+
     }
 
     override fun getData() {

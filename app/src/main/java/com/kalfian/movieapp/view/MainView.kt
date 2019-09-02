@@ -38,4 +38,16 @@ interface MainView {
         fun getFavoriteTvShow(context: Context)
         fun toDetail(context: Context, position: Int)
     }
+
+    interface SearchView {
+        fun getData(query: String, isMovie: Boolean)
+        fun showLoader()
+        fun hideLoader()
+        fun showData(data: ArrayList<Any>)
+    }
+
+    interface SearchPresenter {
+        fun getSearch(context: Context, isMovie: Boolean, query: String)
+        fun toDetail(context: Context, position: Int, isMovie: Boolean)
+    }
 }

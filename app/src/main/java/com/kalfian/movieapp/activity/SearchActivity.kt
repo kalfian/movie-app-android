@@ -1,18 +1,19 @@
-package com.kalfian.movieapp
+package com.kalfian.movieapp.activity
 
-import android.content.Context
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.support.v4.view.MenuItemCompat
-import android.view.inputmethod.InputMethodManager
+import com.kalfian.movieapp.R
+import com.kalfian.movieapp.view.MainView
 
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity(), MainView.SearchView {
+
+    private var query = ""
+    private var isMovie = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,8 @@ class SearchActivity : AppCompatActivity() {
             val searchItem: MenuItem = menu.findItem(R.id.search_tab)
             val searchView: SearchView = searchItem.actionView as SearchView
             searchItem.expandActionView()
+            searchView.clearFocus()
+            searchView.setQuery(query, false)
 
             searchItem.setOnActionExpandListener(object: MenuItem.OnActionExpandListener {
                 override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
@@ -38,21 +41,27 @@ class SearchActivity : AppCompatActivity() {
                 override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
                     finish()
 
-                    val inputManager: InputMethodManager =getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
                     return true
                 }
 
             })
-            searchData(searchView)
         }
         return true
     }
 
-    private fun searchData(searchView: SearchView) {
-        searchView.setOnCloseListener {
-            Log.d("Close","True")
-            true
-        }
+    override fun getData(query: String, isMovie: Boolean) {
+
+    }
+
+    override fun showLoader() {
+
+    }
+
+    override fun hideLoader() {
+
+    }
+
+    override fun showData(data: ArrayList<Any>) {
+
     }
 }

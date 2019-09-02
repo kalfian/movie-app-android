@@ -1,8 +1,8 @@
-package com.kalfian.movieapp
+package com.kalfian.movieapp.activity
 
-import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Movie
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -15,14 +15,17 @@ import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.inputmethod.InputMethodManager
+import com.kalfian.movieapp.R
 import com.kalfian.movieapp.view.ui.favorite.FavoriteFragment
 import com.kalfian.movieapp.view.ui.movie.MovieFragment
+import com.kalfian.movieapp.view.ui.movie.SearchMovieActivity
+import com.kalfian.movieapp.view.ui.tvShow.SearchTvShowActivity
 import com.kalfian.movieapp.view.ui.tvShow.TVShowFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private var menuItem: Menu? = null
+    private var isMovie = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +38,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerNavView: NavigationView = findViewById(R.id.nav_view_drawer)
 
         val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this, drawerLayout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -74,9 +79,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 menuItem?.getItem(0)?.collapseActionView()
 
-                val inputManager: InputMethodManager =getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.SHOW_FORCED)
-                startActivity(Intent(applicationContext, SearchActivity::class.java))
+                searchView.clearFocus()
+                if (isMovie) {
+                    val data = Intent(applicationContext, SearchMovieActivity::class.java)
+                    data.putExtra("query", query)
+                    startActivity(data)
+                } else {
+                    val data = Intent(applicationContext, SearchTvShowActivity::class.java)
+                    data.putExtra("query", query)
+                    startActivity(data)
+                }
+
                 return true
             }
 
@@ -115,6 +128,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun moveFragment(fragment: Fragment, title: String) {
         supportActionBar?.title = title
+
+        menuItem?.getItem(0)?.isVisible = true
+        when (title) {
+            "Movie" -> isMovie = true
+            "TV Show" -> isMovie = false
+            else -> menuItem?.getItem(0)?.isVisible = false
+        }
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_frame, fragment)
             .commit()
