@@ -26,4 +26,8 @@
     <string name="first_air">First Air Date</string>
     <string name="change_languange">Change Language</string>
     <string name="title_favorite">Set Favorite</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="Search">Search</string>
 </resources>
