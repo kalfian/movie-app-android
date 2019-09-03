@@ -30,4 +30,7 @@
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
     <string name="Search">Search</string>
+
+    <string name="daily_notification">we miss you :( don\'t forget to check out your favorite movie or tv show</string>
+    <string name="information">Info</string>
 </resources>

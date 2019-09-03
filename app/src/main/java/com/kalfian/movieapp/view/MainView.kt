@@ -50,4 +50,12 @@ interface MainView {
         fun getSearch(context: Context, isMovie: Boolean, query: String)
         fun toDetail(context: Context, position: Int, isMovie: Boolean)
     }
+
+    interface SettingView {
+        fun switchLang()
+    }
+
+    interface SettingPresenter {
+
+    }
 }

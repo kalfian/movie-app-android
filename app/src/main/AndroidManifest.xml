@@ -12,6 +12,21 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+
+        <service android:name=".services.alarm.AlarmServices"/>
+
+        <receiver
+                android:name=".services.alarm.MainReceiver"
+                android:enabled="true"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".services.alarm.AlarmDailyReceiver"/>
+
         <activity android:name=".view.ui.tvShow.SearchTvShowActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -21,11 +36,6 @@
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view.ui.movie.SearchMovieActivity"/>
-        </activity>
-        <activity android:name=".activity.SearchActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".activity.SearchActivity"/>
         </activity>
         <activity android:name=".view.ui.tvShow.DetailTvShowActivity">
             <meta-data
@@ -40,7 +50,7 @@
                     android:value=".view.ui.movie.DetailMovieActivity"/>
         </activity>
         <activity
-                android:name=".activity.MainActivity"
+                android:name=".main.MainActivity"
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:label="@string/app_name"
                 android:theme="@style/AppTheme.NoActionBar">

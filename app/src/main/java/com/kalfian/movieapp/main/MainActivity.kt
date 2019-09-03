@@ -1,8 +1,7 @@
-package com.kalfian.movieapp.activity
+package com.kalfian.movieapp.main
 
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.Movie
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -48,6 +47,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerNavView.setNavigationItemSelectedListener(this)
 
         moveFragment(MovieFragment(), getString(R.string.bottom_movie))
+
     }
 
     override fun onBackPressed() {
