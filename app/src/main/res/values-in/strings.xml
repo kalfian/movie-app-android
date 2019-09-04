@@ -40,4 +40,6 @@
     <string name="daily_reminder_sub">Pengingat penawaran terbaik dari aplikasi</string>
     <string name="release_reminder">Release Reminder</string>
     <string name="release_reminder_sub">Pengingat untuk mendapat info film terbaru</string>
+    <string name="release_today_title">Tayang hari ini</string>
+    <string name="no_movie_found">Tidak ada film baru</string>
 </resources>

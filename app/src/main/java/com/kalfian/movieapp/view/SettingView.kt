@@ -1,7 +1,6 @@
 package com.kalfian.movieapp.view
 
 import android.content.Context
-import com.kalfian.movieapp.model.ResponseMovie
 
 interface SettingView {
     interface ViewSetting {
@@ -13,7 +12,7 @@ interface SettingView {
 
     interface PresenterSetting {
         fun setDailyAlarm(isOn : Boolean, context: Context)
-        fun setReleaseTodayMovieAlarm(isOn : Boolean, context: Context, data : ResponseMovie.ResultMovie?)
+        fun setReleaseTodayMovieAlarm(isOn : Boolean, context: Context, data: String)
         fun getReleaseToday(context: Context?)
     }
 }

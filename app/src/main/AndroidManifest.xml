@@ -4,6 +4,8 @@
           package="com.kalfian.movieapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
             android:name=".services.PrefApp"
@@ -27,6 +29,7 @@
             </intent-filter>
         </receiver>
         <receiver android:name=".services.alarm.AlarmDailyReceiver"/>
+        <receiver android:name=".services.alarm.AlarmReleaseReceiver"/>
 
         <activity android:name=".view.ui.tvShow.SearchTvShowActivity">
             <meta-data

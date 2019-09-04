@@ -40,4 +40,7 @@
     <string name="daily_reminder_sub">Reminder to get interesting offer</string>
     <string name="release_reminder">Release Reminder</string>
     <string name="release_reminder_sub">Reminder to get latest movie release </string>
+    <string name="release_today_title">Release Today</string>
+    <string name="no_movie_found">No New Movie</string>
+
 </resources>

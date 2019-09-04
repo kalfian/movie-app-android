@@ -23,10 +23,8 @@ class AlarmServices : Service() {
         Log.d("DATE_SELECTED", "ALARM SERVICE RUN")
 
         val isDailyAlarmOn: Boolean = Prefs.getBoolean(StaticData.IS_DAILY_ALARM_ON, false)
-        val isReleaseTodayAlarmOn: Boolean = Prefs.getBoolean(StaticData.IS_TODAY_MOVIE_ALARM_ON, false)
 
         settingDailyAlarm(isDailyAlarmOn)
-        settingReleaseTodayAlarm(isReleaseTodayAlarmOn)
 
     }
 
@@ -63,10 +61,6 @@ class AlarmServices : Service() {
         } else {
             mAlarm.cancel(pendingIntent)
         }
-    }
-
-    private fun settingReleaseTodayAlarm(isOn: Boolean) {
-        TODO("not implemented")
     }
 
 }

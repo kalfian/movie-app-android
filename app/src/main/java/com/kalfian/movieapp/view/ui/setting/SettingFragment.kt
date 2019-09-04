@@ -64,7 +64,16 @@ class SettingFragment : Fragment(), SettingView.ViewSetting, View.OnClickListene
     }
 
     override fun setReleaseMovieToday() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        isReleaseTodayOn = !isReleaseTodayOn
+        if (isReleaseTodayOn) {
+            context?.let { presenter.getReleaseToday(context) }
+            hideLoader()
+        } else {
+            context?.let { presenter.setReleaseTodayMovieAlarm(isReleaseTodayOn, it, "") }
+            hideLoader()
+        }
+        Prefs.putBoolean(StaticData.IS_TODAY_MOVIE_ALARM_ON, isReleaseTodayOn)
+        view?.release_reminder_switch?.isChecked = isReleaseTodayOn
     }
 
     override fun showLoader() {

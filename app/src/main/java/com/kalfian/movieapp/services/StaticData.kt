@@ -2,8 +2,7 @@ package com.kalfian.movieapp.services
 
 class StaticData {
     companion object{
-        const val dataMovie = "DataMovie"
-        const val dataTvShow = "DataTvShow"
+        const val dataMovie = "DataReleaseMovie"
 
         const val channelID = "K01"
         const val channelName = "K Channel"

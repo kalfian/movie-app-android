@@ -44,9 +44,9 @@ interface BaseAPI {
     @GET("discover/movie?")
     fun movieReleaseToday(
         @Query("api_key") api_key: String,
-        @Query("primary_release_date.gte") gte: String,
-        @Query("primary_release_date.lte") lte: String
-    ): Observable<Response<ResponseMovie>>
+        @Query("primary_release_date.lte") gte: String,
+        @Query("primary_release_date.gte") lte: String
+    ): Observable<ResponseMovie>
 
     companion object {
         var URL: String = "https://api.themoviedb.org/3/"
