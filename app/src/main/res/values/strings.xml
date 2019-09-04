@@ -35,4 +35,9 @@
     <string name="information">Info</string>
     <string name="setting">Settings</string>
     <string name="languange">Language</string>
+
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="daily_reminder_sub">Reminder to get interesting offer</string>
+    <string name="release_reminder">Release Reminder</string>
+    <string name="release_reminder_sub">Reminder to get latest movie release </string>
 </resources>

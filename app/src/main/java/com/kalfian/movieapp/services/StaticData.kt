@@ -9,9 +9,9 @@ class StaticData {
         const val channelName = "K Channel"
         const val NOTIFICATION_ID = 1
 
-        const val DAILY_ALARM = "DAILY_ALARM"
+        const val IS_DAILY_ALARM_ON = "DAILY_ALARM"
 
-        const val TODAY_MOVIE_ALARM = "TODAY_MOVIE_ALARM"
+        const val IS_TODAY_MOVIE_ALARM_ON = "TODAY_MOVIE_ALARM"
 
         const val TODAY_MOVIE_NOTIFICATION = "TODAY_MOVIE_NOTIFICATION"
     }

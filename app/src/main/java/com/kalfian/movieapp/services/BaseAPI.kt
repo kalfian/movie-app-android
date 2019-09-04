@@ -5,6 +5,7 @@ import com.kalfian.movieapp.model.ResponseMovie
 import com.kalfian.movieapp.model.ResponseTvShow
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -39,6 +40,13 @@ interface BaseAPI {
         @Query("language") language: String,
         @Query("query") query: String
     ): Observable<ResponseTvShow>
+
+    @GET("discover/movie?")
+    fun movieReleaseToday(
+        @Query("api_key") api_key: String,
+        @Query("primary_release_date.gte") gte: String,
+        @Query("primary_release_date.lte") lte: String
+    ): Observable<Response<ResponseMovie>>
 
     companion object {
         var URL: String = "https://api.themoviedb.org/3/"

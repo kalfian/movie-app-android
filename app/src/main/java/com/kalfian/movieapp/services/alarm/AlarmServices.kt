@@ -22,8 +22,8 @@ class AlarmServices : Service() {
 
         Log.d("DATE_SELECTED", "ALARM SERVICE RUN")
 
-        val isDailyAlarmOn: Boolean = Prefs.getBoolean(StaticData.DAILY_ALARM, true)
-        val isReleaseTodayAlarmOn: Boolean = Prefs.getBoolean(StaticData.TODAY_MOVIE_ALARM, true)
+        val isDailyAlarmOn: Boolean = Prefs.getBoolean(StaticData.IS_DAILY_ALARM_ON, false)
+        val isReleaseTodayAlarmOn: Boolean = Prefs.getBoolean(StaticData.IS_TODAY_MOVIE_ALARM_ON, false)
 
         settingDailyAlarm(isDailyAlarmOn)
         settingReleaseTodayAlarm(isReleaseTodayAlarmOn)
@@ -35,15 +35,15 @@ class AlarmServices : Service() {
     }
 
     private fun settingDailyAlarm(isOn: Boolean) {
-        if (isOn) {
+
             val mAlarm: AlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
             // Get Time
             val c = Calendar.getInstance()
             val cDaily = Calendar.getInstance()
 
-            c.set(Calendar.HOUR_OF_DAY, 7)
-            c.set(Calendar.MINUTE, 0)
+            c.set(Calendar.HOUR_OF_DAY, 0)
+            c.set(Calendar.MINUTE, 6)
             c.set(Calendar.SECOND, 0)
             c.set(Calendar.MILLISECOND, 0)
 
@@ -53,18 +53,20 @@ class AlarmServices : Service() {
 
             val i = Intent(this, AlarmDailyReceiver::class.java)
             val pendingIntent = PendingIntent.getBroadcast(this, 0, i, 0)
-
+        if (isOn) {
             mAlarm.setRepeating(
                 AlarmManager.RTC_WAKEUP,
                 c.timeInMillis,
                 AlarmManager.INTERVAL_DAY,
                 pendingIntent
             )
+        } else {
+            mAlarm.cancel(pendingIntent)
         }
     }
 
     private fun settingReleaseTodayAlarm(isOn: Boolean) {
-
+        TODO("not implemented")
     }
 
 }

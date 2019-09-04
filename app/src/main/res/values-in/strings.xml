@@ -35,4 +35,9 @@
     <string name="information">Info</string>
     <string name="setting">Settings</string>
     <string name="languange">Language</string>
+
+    <string name="daily_reminder">Pengingat Harian</string>
+    <string name="daily_reminder_sub">Pengingat penawaran terbaik dari aplikasi</string>
+    <string name="release_reminder">Release Reminder</string>
+    <string name="release_reminder_sub">Pengingat untuk mendapat info film terbaru</string>
 </resources>
