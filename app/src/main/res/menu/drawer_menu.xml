@@ -14,4 +14,8 @@
                 android:id="@+id/drawer_navigation_favorite"
                 android:icon="@drawable/ico_fav"
                 android:title="@string/bottom_favorite"/>
+        <item
+                android:id="@+id/drawer_navigation_setting"
+                android:icon="@drawable/ic_setting_black"
+                android:title="@string/setting"/>
 </menu>

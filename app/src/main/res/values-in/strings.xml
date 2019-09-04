@@ -26,4 +26,13 @@
     <string name="first_air">Pertama tayang</string>
     <string name="change_languange">Ganti Bahasa</string>
     <string name="title_favorite">Jadikan Favorite</string>
+    <string name="appwidget_text">Contoh</string>
+    <string name="configure">Atur</string>
+    <string name="add_widget">Tambah Widget</string>
+    <string name="Search">Cari</string>
+
+    <string name="daily_notification">rindu nih :( jangan lupa memeriksa acara tv dan film favoritmu</string>
+    <string name="information">Info</string>
+    <string name="setting">Settings</string>
+    <string name="languange">Language</string>
 </resources>

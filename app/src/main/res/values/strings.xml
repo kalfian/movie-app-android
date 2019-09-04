@@ -33,4 +33,6 @@
 
     <string name="daily_notification">we miss you :( don\'t forget to check out your favorite movie or tv show</string>
     <string name="information">Info</string>
+    <string name="setting">Settings</string>
+    <string name="languange">Language</string>
 </resources>

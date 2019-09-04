@@ -18,6 +18,7 @@ import com.kalfian.movieapp.R
 import com.kalfian.movieapp.view.ui.favorite.FavoriteFragment
 import com.kalfian.movieapp.view.ui.movie.MovieFragment
 import com.kalfian.movieapp.view.ui.movie.SearchMovieActivity
+import com.kalfian.movieapp.view.ui.setting.SettingFragment
 import com.kalfian.movieapp.view.ui.tvShow.SearchTvShowActivity
 import com.kalfian.movieapp.view.ui.tvShow.TVShowFragment
 
@@ -109,6 +110,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.drawer_navigation_favorite -> {
                 moveFragment(FavoriteFragment(), getString(R.string.bottom_favorite))
+            }
+            R.id.drawer_navigation_setting -> {
+                moveFragment(SettingFragment(), getString(R.string.setting))
             }
         }
 
