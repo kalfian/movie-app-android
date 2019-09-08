@@ -15,10 +15,15 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".view.tvShow.DetailTvShowActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view.tvShow.DetailTvShowActivity"/>
+        </activity>
         <activity android:name=".view.movie.DetailMovieActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view.movie.DetailMovieActivity" />
+                    android:value=".view.movie.DetailMovieActivity"/>
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
