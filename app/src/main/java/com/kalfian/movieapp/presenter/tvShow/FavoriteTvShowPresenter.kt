@@ -7,7 +7,7 @@ import com.kalfian.movieapp.services.DBAccess
 import com.kalfian.movieapp.view.MainView
 import com.kalfian.movieapp.view.ui.tvShow.DetailTvShowActivity
 
-class FavoriteTvShowPresenter(val view: MainView.TvShowView, val context: Context?): MainView.FavoritTvShowPresenter {
+class FavoriteTvShowPresenter(val view: MainView.TvShowView, val context: Context?): MainView.FavoriteTvShowPresenter {
 
     private var data: ArrayList<ResponseTvShow.ResultTvShow>? = null
 

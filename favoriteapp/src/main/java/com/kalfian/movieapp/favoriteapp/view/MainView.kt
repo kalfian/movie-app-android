@@ -1,8 +1,8 @@
-package com.kalfian.movieapp.view
+package com.kalfian.movieapp.favoriteapp.view
 
 import android.content.Context
-import com.kalfian.movieapp.model.ResponseMovie
-import com.kalfian.movieapp.model.ResponseTvShow
+import com.kalfian.movieapp.favoriteapp.model.ResponseMovie
+import com.kalfian.movieapp.favoriteapp.model.ResponseTvShow
 
 interface MainView {
     interface MovieView {
@@ -13,12 +13,7 @@ interface MainView {
     }
 
     interface MoviePresenter {
-        fun getMovie()
-        fun goToDetailMovie(context: Context, position: Int)
-    }
-
-    interface FavoriteMoviePresenter {
-        fun getFavoriteMovie(context: Context)
+        fun getMovie(context: Context)
         fun toDetail(context: Context, position: Int)
     }
 
@@ -30,12 +25,8 @@ interface MainView {
     }
 
     interface TvShowPresenter {
-        fun getTvShow()
-        fun goToDetailTvShow(context: Context, position: Int)
-    }
-
-    interface FavoriteTvShowPresenter {
-        fun getFavoriteTvShow(context: Context)
+        fun getTvShow(context: Context)
         fun toDetail(context: Context, position: Int)
     }
+
 }

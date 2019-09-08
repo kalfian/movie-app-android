@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".view.ui.favorite.FavoriteFragment">
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             tools:context=".view.favorite.FavoriteFragment">
 
     <android.support.v4.view.ViewPager
             android:id="@+id/viewPager_favorite"
@@ -22,4 +22,5 @@
                 app:tabGravity="fill"
                 app:tabMode="fixed" />
     </android.support.v4.view.ViewPager>
+
 </FrameLayout>
