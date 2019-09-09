@@ -12,6 +12,7 @@ class StaticData {
 
         const val IS_TODAY_MOVIE_ALARM_ON = "TODAY_MOVIE_ALARM"
 
-        const val TODAY_MOVIE_NOTIFICATION = "TODAY_MOVIE_NOTIFICATION"
+        const val SCHEME = "content"
+        const val AUTHOR = "com.kalfian.movieapp"
     }
 }

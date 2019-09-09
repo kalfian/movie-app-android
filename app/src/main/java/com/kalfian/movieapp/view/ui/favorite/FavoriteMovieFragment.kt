@@ -52,7 +52,9 @@ class FavoriteMovieFragment : Fragment(), MainView.MovieView, MovieAdapter.OnIte
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelableArrayList(KEYMOVIE, dataGlobal)
+        if(::dataGlobal.isInitialized) {
+            outState.putParcelableArrayList(KEYMOVIE, dataGlobal)
+        }
     }
 
     override fun showData(data: ArrayList<ResponseMovie.ResultMovie>) {

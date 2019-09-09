@@ -1,4 +1,4 @@
-package com.kalfian.movieapp.view.ui.tvShow
+package com.kalfian.favoriteapp.view.tvShow
 
 
 import android.app.AlertDialog
@@ -9,18 +9,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.kalfian.movieapp.R
-import com.kalfian.movieapp.model.ResponseTvShow
-import com.kalfian.movieapp.presenter.tvShow.TvShowPresenter
-import com.kalfian.movieapp.view.MainView
+
+import com.kalfian.favoriteapp.R
+import com.kalfian.favoriteapp.model.ResponseTvShow
+import com.kalfian.favoriteapp.presenter.tvShow.TvShowPresenter
+import com.kalfian.favoriteapp.view.MainView
 import dmax.dialog.SpotsDialog
-import kotlinx.android.synthetic.main.fragment_tvshow.view.*
+import kotlinx.android.synthetic.main.fragment_tv_show.view.*
 
 /**
  * A simple [Fragment] subclass.
  *
  */
-class TVShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.OnItemClickListener {
+class TvShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.OnItemClickListener {
+
 
     private lateinit var adapter: TvShowAdapter
     private lateinit var presenter: TvShowPresenter
@@ -34,7 +36,7 @@ class TVShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.OnItemClic
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tvshow, container, false)
+        return inflater.inflate(R.layout.fragment_tv_show, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,11 +68,7 @@ class TVShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.OnItemClic
     }
 
     override fun getData() {
-        presenter.getTvShow()
-    }
-
-    override fun onItemClickListener(position: Int) {
-        context?.let { presenter.goToDetailTvShow(it, position) }
+        context?.let { presenter.getTvShow(it) }
     }
 
     override fun showLoader() {
@@ -80,4 +78,13 @@ class TVShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.OnItemClic
     override fun hideLoader() {
         dialog?.dismiss()
     }
+
+    override fun onItemClickListener(position: Int) {
+        context?.let { presenter.toDetail(it, position) }
+    }
+
+    override fun empty() {
+
+    }
+
 }

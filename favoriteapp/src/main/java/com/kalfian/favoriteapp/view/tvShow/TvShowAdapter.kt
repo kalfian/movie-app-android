@@ -1,12 +1,12 @@
-package com.kalfian.movieapp.view.ui.tvShow
+package com.kalfian.favoriteapp.view.tvShow
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kalfian.movieapp.BuildConfig
-import com.kalfian.movieapp.R
-import com.kalfian.movieapp.model.ResponseTvShow
+import com.kalfian.favoriteapp.BuildConfig
+import com.kalfian.favoriteapp.R
+import com.kalfian.favoriteapp.model.ResponseTvShow
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list.view.*
 
@@ -38,7 +38,7 @@ class TvShowAdapter(val items: List<ResponseTvShow.ResultTvShow>): RecyclerView.
             data: ResponseTvShow.ResultTvShow,
             itemClickListener: OnItemClickListener
         ) {
-            itemView.textview_title_list.text = data.original_name
+            itemView.textview_title_list.text = data.title
             itemView.textview_description_list.text = data.overview
             Picasso.get().load(BuildConfig.MOVIE_PATH + data.poster_path).into(itemView.imageview_list)
 

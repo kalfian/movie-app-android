@@ -22,6 +22,7 @@ abstract class DBAccess : RoomDatabase() {
         fun getInstance(context: Context): DBAccess {
             if (instance == null) {
                 instance = Room.databaseBuilder(context.applicationContext, DBAccess::class.java, "favorite")
+                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build()
             }

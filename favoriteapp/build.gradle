@@ -8,7 +8,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.kalfian.movieapp.favoriteapp"
+        applicationId "com.kalfian.favoriteapp"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1

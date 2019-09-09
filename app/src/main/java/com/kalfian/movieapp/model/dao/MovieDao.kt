@@ -3,6 +3,7 @@ package com.kalfian.movieapp.model.dao
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
+import android.database.Cursor
 import com.kalfian.movieapp.model.ResponseMovie
 
 @Dao
@@ -18,4 +19,7 @@ interface MovieDao{
 
     @Query("DELETE FROM movie_db WHERE id == :id")
     fun removeSpecific(id : Long)
+
+    @Query("SELECT * FROM movie_db")
+    fun getAllMovieCursor() : Cursor
 }

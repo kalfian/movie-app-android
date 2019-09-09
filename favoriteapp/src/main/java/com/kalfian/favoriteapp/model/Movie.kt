@@ -1,8 +1,8 @@
-package com.kalfian.movieapp.model
+package com.kalfian.favoriteapp.model
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
-import android.content.ContentValues
+import android.database.Cursor
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -70,17 +70,15 @@ class ResponseMovie {
         var vote_average: Double= 0.0
 
     ) : Parcelable {
-        fun values(): ContentValues {
-            val contentValues = ContentValues()
-            contentValues.put(StringResponseMovie.id, id)
-            contentValues.put(StringResponseMovie.title, title)
-            contentValues.put(StringResponseMovie.poster_path, poster_path)
-            contentValues.put(StringResponseMovie.overview, overview)
-            contentValues.put(StringResponseMovie.release_date, release_date)
-            contentValues.put(StringResponseMovie.popularity, popularity)
-            contentValues.put(StringResponseMovie.vote_average, vote_average)
+        constructor(cursor: Cursor): this() {
+            id = (cursor.getLong(cursor.getColumnIndex(StringResponseMovie.id)))
+            title = (cursor.getString(cursor.getColumnIndex(StringResponseMovie.title)))
+            poster_path = (cursor.getString(cursor.getColumnIndex(StringResponseMovie.poster_path)))
+            overview = (cursor.getString(cursor.getColumnIndex(StringResponseMovie.overview)))
+            release_date = (cursor.getString(cursor.getColumnIndex(StringResponseMovie.release_date)))
+            popularity = (cursor.getDouble(cursor.getColumnIndex(StringResponseMovie.popularity)))
+            vote_average = (cursor.getDouble(cursor.getColumnIndex(StringResponseMovie.vote_average)))
 
-            return contentValues
         }
     }
 }

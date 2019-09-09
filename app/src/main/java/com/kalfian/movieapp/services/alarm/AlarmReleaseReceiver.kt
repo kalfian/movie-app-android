@@ -37,10 +37,6 @@ class AlarmReleaseReceiver : BroadcastReceiver() {
                 .setSmallIcon(R.drawable.ico_movie)
                 .setLargeIcon(BitmapFactory.decodeResource(it.resources, R.drawable.ico_movie))
                 .setContentTitle(titleMovie)
-//                .setStyle(
-//                    NotificationCompat.BigTextStyle()
-//                        .bigText(extra)
-//                )
                 .setContentText(extra)
                 .setDefaults(Notification.DEFAULT_LIGHTS.or(Notification.DEFAULT_SOUND))
                 .setContentInfo(it.resources?.getString(R.string.information))

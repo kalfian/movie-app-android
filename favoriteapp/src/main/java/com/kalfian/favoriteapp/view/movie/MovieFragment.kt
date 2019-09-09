@@ -1,4 +1,5 @@
-package com.kalfian.movieapp.view.ui.movie
+package com.kalfian.favoriteapp.view.movie
+
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -8,10 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.kalfian.movieapp.R
-import com.kalfian.movieapp.model.ResponseMovie
-import com.kalfian.movieapp.presenter.movie.MoviePresenter
-import com.kalfian.movieapp.view.MainView
+
+import com.kalfian.favoriteapp.R
+import com.kalfian.favoriteapp.model.ResponseMovie
+import com.kalfian.favoriteapp.presenter.movie.MoviePresenter
+import com.kalfian.favoriteapp.view.MainView
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.fragment_movie.view.*
 
@@ -35,22 +37,25 @@ class MovieFragment : Fragment(), MainView.MovieView, MovieAdapter.OnItemClickLi
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_movie, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         view.recyclerView_movie.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
         dialog = SpotsDialog.Builder().setContext(context).build()
 
-        if (savedInstanceState != null) {
+        if (savedInstanceState != null && savedInstanceState.containsKey(KEYMOVIE)) {
             showData(savedInstanceState.getParcelableArrayList(KEYMOVIE))
         } else {
             presenter = MoviePresenter(this)
             getData()
         }
 
+        view.swipe_movie.setOnRefreshListener {
+            presenter = MoviePresenter(this)
+            context?.let { presenter.getMovie(it) }
+            view.swipe_movie.isRefreshing = false
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -69,11 +74,7 @@ class MovieFragment : Fragment(), MainView.MovieView, MovieAdapter.OnItemClickLi
     }
 
     override fun getData() {
-        presenter.getMovie()
-    }
-
-    override fun onItemClick(pos: Int) {
-        context?.let { presenter.goToDetailMovie(it, pos) }
+        context?.let { presenter.getMovie(it) }
     }
 
     override fun showLoader() {
@@ -81,6 +82,15 @@ class MovieFragment : Fragment(), MainView.MovieView, MovieAdapter.OnItemClickLi
     }
 
     override fun hideLoader() {
-        dialog?.hide()
+        dialog?.dismiss()
     }
+
+    override fun onItemClick(pos: Int) {
+        context?.let { presenter.toDetail(it, pos) }
+    }
+
+    override fun empty() {
+
+    }
+
 }

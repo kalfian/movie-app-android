@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+    <permission android:name="com.kalfian.movieapp.READ_DATABASE" android:protectionLevel="normal" />
+
     <application
         android:name=".services.PrefApp"
         android:icon="@mipmap/ic_launcher"
@@ -42,6 +44,12 @@
         </receiver>
         <receiver android:name=".services.alarm.AlarmDailyReceiver" />
         <receiver android:name=".services.alarm.AlarmReleaseReceiver" />
+
+        <provider
+                android:name=".provider.FavoriteServiceProvider"
+                android:authorities="com.kalfian.movieapp"
+                android:exported="true"
+                android:readPermission="com.kalfian.movieapp.READ_DATABASE"/>
 
         <activity android:name=".view.ui.tvShow.SearchTvShowActivity">
             <meta-data
