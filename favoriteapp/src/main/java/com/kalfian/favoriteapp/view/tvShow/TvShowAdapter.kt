@@ -38,7 +38,7 @@ class TvShowAdapter(val items: List<ResponseTvShow.ResultTvShow>): RecyclerView.
             data: ResponseTvShow.ResultTvShow,
             itemClickListener: OnItemClickListener
         ) {
-            itemView.textview_title_list.text = data.title
+            itemView.textview_title_list.text = data.original_name
             itemView.textview_description_list.text = data.overview
             Picasso.get().load(BuildConfig.MOVIE_PATH + data.poster_path).into(itemView.imageview_list)
 

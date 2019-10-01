@@ -13,7 +13,7 @@ class StringResponseTvShow{
         const val original_name = "original_name"
         const val poster_path = "poster_path"
         const val overview = "overview"
-        const val first_air = "first_air_date"
+        const val first_air_date = "first_air_date"
         const val popularity = "popularity"
         const val vote_average = "vote_average"
     }
@@ -48,8 +48,8 @@ class ResponseTvShow {
         @SerializedName(StringResponseTvShow.overview)
         var overview: String = "",
 
-        @SerializedName(StringResponseTvShow.first_air)
-        var first_air: String = "",
+        @SerializedName(StringResponseTvShow.first_air_date)
+        var first_air_date: String = "",
 
         @SerializedName(StringResponseTvShow.popularity)
         var popularity: Double = 0.0,
@@ -63,7 +63,7 @@ class ResponseTvShow {
             contentValues.put(StringResponseTvShow.original_name, original_name)
             contentValues.put(StringResponseTvShow.poster_path, poster_path)
             contentValues.put(StringResponseTvShow.overview, overview)
-            contentValues.put(StringResponseTvShow.first_air, first_air)
+            contentValues.put(StringResponseTvShow.first_air_date, first_air_date)
             contentValues.put(StringResponseTvShow.popularity, popularity)
             contentValues.put(StringResponseTvShow.vote_average, vote_average)
 

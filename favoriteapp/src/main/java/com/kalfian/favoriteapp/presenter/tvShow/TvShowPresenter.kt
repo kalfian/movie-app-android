@@ -1,40 +1,70 @@
 package com.kalfian.favoriteapp.presenter.tvShow
 
+import android.content.ContentProviderClient
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
+import android.net.Uri
+import android.os.RemoteException
+import android.util.Log
 import com.kalfian.favoriteapp.model.ResponseTvShow
+import com.kalfian.favoriteapp.model.StringResponseTvShow
+import com.kalfian.favoriteapp.services.StaticData
 import com.kalfian.favoriteapp.view.MainView
 import com.kalfian.favoriteapp.view.tvShow.DetailTvShowActivity
 
 class TvShowPresenter (val view: MainView.TvShowView): MainView.TvShowPresenter {
 
     private var result: ArrayList<ResponseTvShow.ResultTvShow>? = null
+    private val TV_SHOW_TABLE = ResponseTvShow.ResultTvShow::class.java.simpleName as String
+    private val CONTENT_URI = Uri.parse(StaticData.SCHEME+"://" + StaticData.AUTHOR + "/" + TV_SHOW_TABLE )
 
     override fun getTvShow(context: Context) {
-        val tvShows = ArrayList<ResponseTvShow.ResultTvShow>()
+        Log.d("CONTENT_URI", CONTENT_URI.toString())
+        val clientContentProvider: ContentProviderClient = context.contentResolver.acquireContentProviderClient(CONTENT_URI)
+        try {
+            assert(clientContentProvider != null)
+            val cursor = clientContentProvider.query(CONTENT_URI, arrayOf(
+                StringResponseTvShow.id,
+                StringResponseTvShow.original_name,
+                StringResponseTvShow.poster_path,
+                StringResponseTvShow.overview,
+                StringResponseTvShow.first_air_date,
+                StringResponseTvShow.popularity,
+                StringResponseTvShow.vote_average
+            ), null, null, null, null)
 
-        val tvShow = ResponseTvShow.ResultTvShow()
-        tvShow.id = 1
-        tvShow.overview = "After a particle accelerator causes a freak storm, CSI Investigator Barry Allen is struck by lightning and falls into a coma. Months later he awakens with the power of super speed, granting him the ability to move through Central City like an unseen guardian angel. Though initially excited by his newfound powers, Barry is shocked to discover he is not the only \\\"meta-human\\\" who was created in the wake of the accelerator explosion -- and not everyone is using their new powers for good. Barry partners with S.T.A.R. Labs and dedicates his life to protect the innocent. For now, only a few close friends and associates know that Barry is literally the fastest man alive, but it won't be long before the world learns what Barry Allen has become...The Flash."
-        tvShow.popularity = 5.0
-        tvShow.poster_path = "/is7DUNsw59EcTwCO1FgECbNIfu0.jpg"
-        tvShow.first_air = "2019-09-06"
-        tvShow.title = "Desmontando la Historia"
-        tvShow.vote = 40.0
-
-        tvShows.add(tvShow)
-        tvShows.add(tvShow)
-        tvShows.add(tvShow)
-        tvShows.add(tvShow)
-        tvShows.add(tvShow)
-
-        view.showData(tvShows)
-        result = tvShows
+            assert(cursor != null)
+            if (cursor.count > 0) {
+                view.showData(convertCursor(cursor))
+                Log.d("Error","CURSOR ADA")
+            } else {
+                Log.d("Error","CURSOR KOSONG")
+                view.empty()
+                cursor.close()
+            }
+        } catch (e: RemoteException) {
+            Log.d("ERROR_CURSOR", e.toString())
+        }
     }
 
     override fun convertCursor(cursor: Cursor): ArrayList<ResponseTvShow.ResultTvShow> {
-        return ArrayList()
+        val items: ArrayList<ResponseTvShow.ResultTvShow> = ArrayList()
+
+        try {
+            while (cursor.moveToNext()) {
+                val item = ResponseTvShow.ResultTvShow(cursor)
+                Log.d("DATA_ITEM_CURSOR",item.toString())
+                items.add(item)
+            }
+
+        } catch (e: Error) {
+            Log.d("ERROR_CONVERT", e.toString())
+        }
+
+        result = items
+
+        return items
     }
 
     override fun toDetail(context: Context, position: Int) {

@@ -11,12 +11,12 @@ import kotlinx.android.parcel.Parcelize
 class StringResponseTvShow{
     companion object{
         const val id = "id"
-        const val title = "original_name"
+        const val original_name = "original_name"
         const val poster_path = "poster_path"
         const val overview = "overview"
-        const val first_air = "first_air_date"
+        const val first_air_date = "first_air_date"
         const val popularity = "popularity"
-        const val vote = "vote_average"
+        const val vote_average = "vote_average"
     }
 }
 
@@ -47,7 +47,7 @@ class ResponseTvShow {
 
         @SerializedName("original_name")
         @Expose
-        var title: String = "",
+        var original_name: String = "",
 
         @SerializedName("poster_path")
         @Expose
@@ -59,7 +59,7 @@ class ResponseTvShow {
 
         @SerializedName("first_air_date")
         @Expose
-        var first_air: String = "",
+        var first_air_date: String = "",
 
         @SerializedName("popularity")
         @Expose
@@ -67,16 +67,16 @@ class ResponseTvShow {
 
         @SerializedName("vote_average")
         @Expose
-        var vote: Double = 0.0
+        var vote_average: Double = 0.0
     ) : Parcelable {
         constructor(cursor: Cursor): this() {
             id = cursor.getLong(cursor.getColumnIndex(StringResponseTvShow.id))
-            title = cursor.getString(cursor.getColumnIndex(StringResponseTvShow.title))
+            original_name = cursor.getString(cursor.getColumnIndex(StringResponseTvShow.original_name))
             poster_path = cursor.getString(cursor.getColumnIndex(StringResponseTvShow.poster_path))
             overview = cursor.getString(cursor.getColumnIndex(StringResponseTvShow.overview))
-            first_air = cursor.getString(cursor.getColumnIndex(StringResponseTvShow.first_air))
+            first_air_date = cursor.getString(cursor.getColumnIndex(StringResponseTvShow.first_air_date))
             popularity = cursor.getDouble(cursor.getColumnIndex(StringResponseTvShow.popularity))
-            vote = cursor.getDouble(cursor.getColumnIndex(StringResponseTvShow.vote))
+            vote_average = cursor.getDouble(cursor.getColumnIndex(StringResponseTvShow.vote_average))
         }
     }
 }

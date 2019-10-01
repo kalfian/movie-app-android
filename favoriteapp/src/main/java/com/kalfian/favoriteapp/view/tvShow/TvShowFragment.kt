@@ -44,7 +44,7 @@ class TvShowFragment : Fragment(), MainView.TvShowView, TvShowAdapter.OnItemClic
         view.recyclerView_tv_show.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
         dialog = SpotsDialog.Builder().setContext(context).build()
 
-        if (savedInstanceState != null) {
+        if (savedInstanceState != null && savedInstanceState.containsKey(KEYTVSHOW)) {
             showData(savedInstanceState.getParcelableArrayList(KEYTVSHOW))
         } else {
             presenter = TvShowPresenter(this)

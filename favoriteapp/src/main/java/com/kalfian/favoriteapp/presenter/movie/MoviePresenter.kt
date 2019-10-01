@@ -1,6 +1,5 @@
 package com.kalfian.favoriteapp.presenter.movie
 
-import android.annotation.SuppressLint
 import android.content.ContentProviderClient
 import android.content.Context
 import android.content.Intent
@@ -21,7 +20,6 @@ class MoviePresenter(val view: MainView.MovieView): MainView.MoviePresenter {
     private val MOVIE_TABLE = ResponseMovie.ResultMovie::class.java.simpleName as String
     private val CONTENT_URI = Uri.parse(StaticData.SCHEME+"://" + StaticData.AUTHOR + "/" + MOVIE_TABLE )
 
-    @SuppressLint("Recycle")
     override fun getMovie(context: Context) {
         Log.d("CONTENT_URI", CONTENT_URI.toString())
         val clientContentProvider: ContentProviderClient = context.contentResolver.acquireContentProviderClient(CONTENT_URI)
